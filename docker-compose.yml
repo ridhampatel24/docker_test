@@ -7,6 +7,9 @@ services:
     build: ./frontend
     ports:
       - 3000:3000
+    networks:
+      ridham_network:
+        ipv4_address: "172.24.238.4"
 
   backend: 
     depends_on: 
@@ -17,6 +20,11 @@ services:
     environment: 
       DB_URL: mongodb://db/vidly
     command: ./docker-entrypoint.sh
+    expose:
+      - "3001"
+    networks:
+      ridham_network:
+        ipv4_address: "172.24.238.3"
 
   db:
     image: mongo:4.0-xenial
@@ -26,6 +34,17 @@ services:
       - vidly:/data/db
     expose:
       - "27107"
+    networks:
+      ridham_network:
+        ipv4_address: "172.24.238.5"
 
 volumes:
   vidly:
+
+networks:
+  ridham_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.24.238.0/24
