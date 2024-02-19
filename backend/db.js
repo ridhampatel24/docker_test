@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const dbUrl = process.env.DB_URL || "mongodb://172.24.238.5/vidly";
+const dbUrl = process.env.DB_URL || "mongodb://172.24.238.5/ridham";
 
 const connect = async () => {
   await mongoose.connect(dbUrl, {
