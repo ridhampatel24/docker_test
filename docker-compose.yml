@@ -27,11 +27,11 @@ services:
         ipv4_address: "172.24.238.3"
 
   db:
-    image: mongo:4.0-xenial
+    image: mongo
     # ports:
     #   - 27017:27017
     volumes:
-      - vidly:/data/db
+      - ridham:/data/db
     expose:
       - "27107"
     networks:
@@ -39,7 +39,7 @@ services:
         ipv4_address: "172.24.238.5"
 
 volumes:
-  vidly:
+  ridham:
 
 networks:
   ridham_network:
